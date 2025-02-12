@@ -1,10 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
-</body>
-</html>
+{% extends "base.html" %}
+{% block title %}{{ project.title }}{% endblock title %}
+{% block content %}
+    <article class="project-detail">
+        <h1>{{ project.title }}</h1>
+        {% if project.image %}
+            <img src="{{ project.image.url }}" alt="{{ project.title }}">
+        {% endif %}
+        <p>{{ project.description }}</p>
+        <p>Tags:
+            {% for tag in project.tags.all %}
+                <span class="tag">{{ tag.name }}</span>
+            {% endfor %}
+        </p>
+        {% if project.live_url %}
+            <a href="{{ project.live_url }}" target="_blank">Live Demo</a>
+        {% endif %}
+        {% if project.github_url %}
+            <a href="{{ project.github_url }}" target="_blank">Github</a>
+        {% endif %}
+    </article>
+{% endblock content %}

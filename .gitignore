@@ -1,2 +1,4 @@
 # .gitingnore
 .env
+docker-compose.prod.yml
+Dockerfile

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}8-Bit-Dev Portfolio{% endblock title %}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <header>
+        <!-- TODO: Navigation bar with links (Home, Projects, About, etc.) -->
+        <nav>
+            <a href="{% url 'home' %}">Home</a>
+            <a href="{% url 'projects' %}">Projects</a>
+            <!-- TODO: Add more links as necessary -->
+        </nav>
+    </header>
+    <main>
+        {% block content %}
+        {% endblock content %}
+    </main>
+    <footer>
+        <p>Copyright &copy; 2025 Fraser W Bayle. All rights reserved</p>
+    </footer>
+    <!-- TODO: include Jscript files if necessary -->
+</body>
+</html>
