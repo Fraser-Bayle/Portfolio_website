@@ -1,26 +1,30 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>{% block title %}8-Bit-Dev Portfolio{% endblock title %}</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <meta charset="UTF-8">
+  <title>{% block title %}My Portfolio{% endblock title %}</title>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <!-- TODO: Link to any additional CSS files (e.g., for fonts, 8-bit theme) -->
 </head>
 <body>
-    <header>
-        <!-- TODO: Navigation bar with links (Home, Projects, About, etc.) -->
-        <nav>
-            <a href="{% url 'home' %}">Home</a>
-            <a href="{% url 'projects' %}">Projects</a>
-            <!-- TODO: Add more links as necessary -->
-        </nav>
-    </header>
-    <main>
-        {% block content %}
-        {% endblock content %}
-    </main>
-    <footer>
-        <p>Copyright &copy; 2025 Fraser W Bayle. All rights reserved</p>
-    </footer>
-    <!-- TODO: include Jscript files if necessary -->
+  <header>
+    <nav class="navbar">
+      <ul>
+        <li><a href="{% url 'pages:home' %}">Home</a></li>
+        <li><a href="{% url 'projects:project_list' %}">Projects</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/contact/">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    {% block content %}{% endblock content %}
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Fraser W Bayle. All rights reserved.</p>
+  </footer>
 </body>
 </html>

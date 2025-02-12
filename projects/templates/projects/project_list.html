@@ -1,32 +1,22 @@
 {% extends "base.html" %}
-{% block title %}Projects{% endblock title %}
-{% block content %}
-    <h1>Projects</h1>
-    <!-- Todo: Add a filter UI for tags -->
-    <form method="get"?>
-        <label for="tag">Filter by tag</label>
-        <input type="text" name="tag" id="tag" placeholder="e.g., C++, Data Science...">
-        <button type="submit">Filter</button>
-    </form>
+{% block title %}My Projects{% endblock title %}
 
-    <div class="projects">
-        {% for project in projects %}
-            <div class="project-node">
-                <!-- TODO: Add styling to make nodes 8-bit style -->
-                {% if project.image %}
-                    <img src="{{ project.image.url }}" alt="{{ project.title }} thumbnail">
-                {% endif %}
-                <h2>{{ project.title }}</h2>
-                <p>{{ project.description|truncatewords:20 }}</p>
-                <p>Tags:
-                    {% for tag in project.tags.all %}
-                        <span class="tag">{{ tag.name }}</span>
-                    {% endfor %}
-                </p>
-                <a href="{% url 'project_detail' project.pk %}">View Details</a>
-            </div>
-        {% empty %}
-            <p>No projects found. Add some in the admin panel</p>
-        {% endfor %}
-    </div>
+{% block content %}
+  <h1 class="page-title">My Projects</h1>
+  <div class="project-grid">
+    {% for project in projects %}
+      <div class="project-card">
+        {% if project.thumbnail %}
+          <img src="{{ project.thumbnail.url }}" alt="{{ project.title }} thumbnail" class="project-thumbnail">
+        {% else %}
+          <div class="project-thumbnail placeholder">No Image</div>
+        {% endif %}
+        <h2 class="project-title">{{ project.title }}</h2>
+        <p class="project-description">{{ project.description|truncatewords:20 }}</p>
+        <!-- TODO: Future enhancement: Add a link to a detailed project view -->
+      </div>
+    {% empty %}
+      <p>No projects to display.</p>
+    {% endfor %}
+  </div>
 {% endblock content %}

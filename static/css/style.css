@@ -1,42 +1,74 @@
-/* TODO: Define a retro 8-bit-matrix style palette and fonts */
+/* Base styles for body and fonts */
 body {
-    background-color: #121212;
-    color: #e0e0e0;
-    font-family: 'Press Start 2P', monospace;
+  background-color: #121212;
+  color: #e0e0e0;
+  font-family: 'Press Start 2P', cursive;  /* Example 8-bit font (import via Google Fonts if needed) */
+  margin: 0;
+  padding: 0;
 }
 
-nav a {
-    margin-right: 15px;
-    text-decoration: none;
-    color: #e0e0e0;
+/* Navigation Bar */
+.navbar {
+  background-color: #222;
+  padding: 10px;
+}
+.navbar ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+.navbar ul li {
+  margin-right: 20px;
+}
+.navbar ul li a {
+  color: #e0e0e0;
+  text-decoration: none;
 }
 
-/* Project Grid style */
+/* Page Title */
+.page-title {
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* Project Grid Layout */
 .project-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  padding: 20px;
 }
 
-.project-node {
-    background-color: #222;
-    padding: 10px;
-    border: 2px solid #444;
-    width: 300px;
-    text-align: center;
+/* Project Card */
+.project-card {
+  background-color: #222;
+  border: 2px solid #444;
+  padding: 15px;
+  text-align: center;
+  transition: transform 0.2s;
+}
+.project-card:hover {
+  transform: scale(1.05);
+}
+.project-thumbnail {
+  width: 100%;
+  height: auto;
+  border-bottom: 2px solid #444;
+  margin-bottom: 10px;
+}
+.project-thumbnail.placeholder {
+  background-color: #333;
+  color: #777;
+  padding: 40px 0;
 }
 
-.project-node img {
-    max-width: 100%;
-    height: auto;
+/* Responsive behavior */
+@media (max-width: 600px) {
+  .navbar ul {
+    flex-direction: column;
+  }
+  .navbar ul li {
+    margin-bottom: 10px;
+  }
 }
-
-.tag {
-    background-color: #333;
-    padding: 2px 5px;
-    margin-right: 3px;
-    border-radius: 3px;
-    font-size: 0.8rem;
-}
-
-/* TODO: Add additional styling for hover effects and animations */
