@@ -2,29 +2,70 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>{% block title %}My Portfolio{% endblock title %}</title>
-  <link rel="stylesheet" href="{% static 'css/style.css' %}">
-  <!-- TODO: Link to any additional CSS files (e.g., for fonts, 8-bit theme) -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}8-Bit-Dev{% endblock title %}</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <!-- 8-bit retro font -->
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        .navbar-dark {
+            background-color: #000 !important;
+            border-bottom: 4px solid #00ff00;
+        }
+
+        .navbar-dark .navbar-brand,
+        .navbar-dark .navbar-nav .nav-link {
+            color: #00ff00 !important;
+            transition: all 0.3s ease;
+        }
+
+        .navbar-dark .navbar-nav .nav-link:hover,
+        .navbar-dark .navbar-brand:hover {
+            color: #fff !important;
+            text-shadow: 0 0 10px #00ff00;
+        }
+
+        .navbar-dark .navbar-toggler {
+            border-color: #00ff00;
+        }
+
+        .navbar-dark .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(0, 255, 0, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <nav class="navbar">
-      <ul>
-        <li><a href="{% url 'pages:home' %}">Home</a></li>
-        <li><a href="{% url 'projects:project_list' %}">Projects</a></li>
-        <li><a href="{% url 'pages:about' %}">About</a></li>
-        <li><a href="{% url 'pages:contact' %}">Contact</a></li>
-      </ul>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <a class="navbar-brand" href="{% url 'pages:home' %}">8-Bit-Dev</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'pages:home' %}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'projects:project_list' %}">Projects</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'pages:about' %}">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'pages:contact' %}">Contact</a>
+                </li>
+            </ul>
+        </div>
     </nav>
-  </header>
 
-  <main>
-    {% block content %}{% endblock content %}
-  </main>
+    <main>
+        {% block content %}{% endblock content %}
+    </main>
 
-  <footer>
-    <p>&copy; 2025 Fraser W Bayle. All rights reserved.</p>
-  </footer>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
