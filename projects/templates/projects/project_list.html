@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load static %}
 {% block title %}My Projects{% endblock title %}
 
 {% block content %}
@@ -178,4 +179,7 @@
       font-size: 0.7em;
     }
   </style>
+{% block extra_js %}
+<script src="{% static 'js/projects.js' %}"></script>
+{% endblock extra_js %}
 {% endblock content %}
