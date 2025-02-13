@@ -28,7 +28,10 @@
 
     <!-- Projects Grid -->
     <div class="project-grid">
-      {% for project in projects %}
+    {% if not projects %}
+        <p class="pixel-text">No projects found.</p>
+    {% else %}
+        {% for project in projects %}
       <a href="{% url 'projects:project_detail' project.pk %}" class="project-link">
         <div class="project-card pixel-border">
           {% if project.thumbnail %}
@@ -49,6 +52,7 @@
         <p class="pixel-text">No projects found matching the selected tags.</p>
       </a>
       {% endfor %}
+    {% endif %}
     </div>
   </div>
 

@@ -4,7 +4,7 @@ from .models import Project, Tag
 
 @admin.register(Project)
 class ProjectAdmin(admin.ModelAdmin):
-    list_display = ('title', 'created_at', 'live_url', 'github_url')
+    list_display = ('title', 'created_at')
     search_fields = ('title', 'description')
     list_filter = ('tags',) #Must be tuple
 
