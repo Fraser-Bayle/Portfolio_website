@@ -1,22 +1,52 @@
 {% extends "base.html" %}
+
 {% block title %}{{ project.title }}{% endblock title %}
+
 {% block content %}
+<div class="container">
     <article class="project-detail">
-        <h1>{{ project.title }}</h1>
-        {% if project.image %}
-            <img src="{{ project.image.url }}" alt="{{ project.title }}">
-        {% endif %}
-        <p>{{ project.description }}</p>
-        <p>Tags:
-            {% for tag in project.tags.all %}
-                <span class="tag">{{ tag.name }}</span>
-            {% endfor %}
-        </p>
-        {% if project.live_url %}
-            <a href="{{ project.live_url }}" target="_blank">Live Demo</a>
-        {% endif %}
-        {% if project.github_url %}
-            <a href="{{ project.github_url }}" target="_blank">Github</a>
-        {% endif %}
+        <div class="project-header">
+            <h1 class="pixel-font">{{ project.title }}</h1>
+        </div>
+
+        <div class="project-content">
+            <div class="project-image-container">
+                {% if project.image %}
+                    <img class="project-image pixelated" src="{{ project.image.url }}" alt="{{ project.title }}">
+                {% endif %}
+            </div>
+
+            <div class="project-info">
+                <div class="project-description pixel-border">
+                    <p>{{ project.description }}</p>
+                </div>
+
+                <div class="project-tags">
+                    {% for tag in project.tags.all %}
+                        <span class="tag pixel-border">{{ tag.name }}</span>
+                    {% endfor %}
+                </div>
+
+                <div class="project-links">
+                    {% if project.live_url %}
+                        <a href="{{ project.live_url }}" class="btn pixel-btn" target="_blank">
+                            <span class="btn-text">🎮 Live Demo</span>
+                        </a>
+                    {% endif %}
+                    {% if project.github_url %}
+                        <a href="{{ project.github_url }}" class="btn pixel-btn" target="_blank">
+                            <span class="btn-text">💻 Github</span>
+                        </a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <div class="back-container">
+            <a href="{% url 'projects:project_list' %}" class="btn pixel-btn back-btn">
+                <span class="btn-text">← Back to Projects</span>
+            </a>
+        </div>
     </article>
+</div>
 {% endblock content %}

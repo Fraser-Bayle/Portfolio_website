@@ -2,21 +2,180 @@
 {% block title %}My Projects{% endblock title %}
 
 {% block content %}
-  <h1 class="page-title">My Projects</h1>
-  <div class="project-grid">
-    {% for project in projects %}
-      <div class="project-card">
-        {% if project.thumbnail %}
-          <img src="{{ project.thumbnail.url }}" alt="{{ project.title }} thumbnail" class="project-thumbnail">
-        {% else %}
-          <div class="project-thumbnail placeholder">No Image</div>
-        {% endif %}
-        <h2 class="project-title">{{ project.title }}</h2>
-        <p class="project-description">{{ project.description|truncatewords:20 }}</p>
-        <!-- TODO: Future enhancement: Add a link to a detailed project view -->
-      </div>
-    {% empty %}
-      <p>No projects to display.</p>
-    {% endfor %}
+  <div class="container my-4">
+    <h1 class="page-title pixel-text">My Projects</h1>
+
+    <!-- Filter Form -->
+    <form method="get" id="tag-filter-form" class="pixel-border mb-4">
+      <fieldset>
+        <legend class="pixel-text">Filter by Tags:</legend>
+        <div class="tag-container">
+          {% for tag in all_tags %}
+            <label class="tag-label">
+              <input type="checkbox" name="tags" value="{{ tag.id }}"
+                {% if tag in active_tags %} checked {% endif %}>
+              <span class="pixel-text">{{ tag.name }}</span>
+            </label>
+          {% endfor %}
+        </div>
+        <div class="filter-buttons">
+          <button type="submit" class="pixel-button">Apply Filters</button>
+          <a href="{% url 'projects:project_list' %}" class="pixel-button">Clear Filters</a>
+        </div>
+      </fieldset>
+    </form>
+
+    <!-- Projects Grid -->
+    <div class="project-grid">
+      {% for project in projects %}
+      <a href="{% url 'projects:project_detail' project.pk %}" class="project-link">
+        <div class="project-card pixel-border">
+          {% if project.thumbnail %}
+            <img src="{{ project.thumbnail.url }}" alt="{{ project.title }} thumbnail" class="project-thumbnail">
+          {% else %}
+            <div class="project-thumbnail placeholder pixel-text">No Image</div>
+          {% endif %}
+          <h2 class="project-title pixel-text">{{ project.title }}</h2>
+          <p class="project-description">{{ project.description|truncatewords:20 }}</p>
+          <div class="project-tags">
+            <span class="pixel-text">Tags:</span>
+            {% for tag in project.tags.all %}
+              <span class="tag">{{ tag.name }}</span>{% if not forloop.last %}, {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+      {% empty %}
+        <p class="pixel-text">No projects found matching the selected tags.</p>
+      </a>
+      {% endfor %}
+    </div>
   </div>
+
+  <style>
+    .pixel-text {
+      font-family: 'Press Start 2P', cursive;
+      color: #00ff00;
+    }
+
+    .pixel-border {
+      border: 4px solid #00ff00;
+      padding: 15px;
+      background-color: rgba(0, 0, 0, 0.8);
+      box-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
+    }
+
+    .project-link {
+    text-decoration: none;
+    display: block;
+    }
+
+    .project-link:hover,
+    .project-link:focus,
+    .project-link:active,
+    .project-link:visited {
+        text-decoration: none;
+    }
+
+    .project-link * {
+        color: #00ff00;
+    }
+
+    .project-title {
+        color: #00ff00 !important;
+    }
+
+    .project-tags span {
+        color: #00ff00 !important;
+    }
+
+
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 2rem;
+      padding: 1rem;
+    }
+
+    .project-card {
+        transition: transform 0.3s ease;
+        cursor: pointer;
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .project-description {
+        color: #00ff00 !important;
+        opacity: 0.8;
+    }
+
+
+    .project-thumbnail {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border: 2px solid #00ff00;
+    }
+
+    .placeholder {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 200px;
+      background-color: #111;
+    }
+
+    .tag-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin: 1rem 0;
+    }
+
+    .tag-label {
+      cursor: pointer;
+      padding: 5px;
+      transition: all 0.3s ease;
+    }
+
+    .tag-label:hover {
+      text-shadow: 0 0 10px #00ff00;
+    }
+
+    .pixel-button {
+      font-family: 'Press Start 2P', cursive;
+      background-color: #000;
+      color: #00ff00;
+      border: 2px solid #00ff00;
+      padding: 10px 20px;
+      margin: 5px;
+      text-decoration: none;
+      display: inline-block;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .pixel-button:hover {
+      background-color: #00ff00;
+      color: #000;
+      box-shadow: 0 0 15px rgba(0, 255, 0, 0.5);
+    }
+
+    .filter-buttons {
+      margin-top: 1rem;
+    }
+
+    .project-tags {
+      margin-top: 1rem;
+      font-size: 0.8em;
+    }
+
+    .tag {
+      color: #00ff00;
+      font-family: 'Press Start 2P', cursive;
+      font-size: 0.7em;
+    }
+  </style>
 {% endblock content %}

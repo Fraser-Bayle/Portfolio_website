@@ -26,12 +26,13 @@ body {
 
 /* Example: Project Card, if you have one */
 .project-card {
-  background-color: #111; /* Slightly lighter than #000 */
+  background-color: #000;
   border: 4px solid #00ff00;
   padding: 15px;
-  text-align: center;
-  transition: transform 0.2s, box-shadow 0.2s;
+  margin-bottom: 1rem;
+  box-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
 }
+
 
 .project-card:hover {
   transform: translate(4px, 4px);
@@ -45,4 +46,163 @@ footer {
   text-align: center;
   padding: 10px 0;
   border-top: 4px solid #00ff00;
+}
+
+/* Container */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+/* Project Detail Styles */
+.project-detail {
+  background-color: #000;
+  border: 4px solid #00ff00;
+  padding: 2rem;
+  color: #00ff00;
+}
+
+
+.project-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.pixel-font {
+  font-family: 'Press Start 2P', cursive;
+  color: #00ff00;
+}
+
+
+/* Image Styles */
+.project-image-container {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto 2rem auto;
+}
+
+
+.project-image {
+  max-width: 100%;
+  height: auto;
+  border: 2px solid #00ff00;
+  box-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
+}
+
+
+.pixelated {
+    image-rendering: pixelated;
+}
+
+/* Project Info */
+.project-info {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.project-description {
+  color: #00ff00;
+  text-shadow: 1px 1px 1px #000;
+  background-color: transparent;
+}
+
+
+/* Tags */
+.project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+}
+
+.tag {
+  background-color: #000;
+  color: #00ff00;
+  border: 2px solid #00ff00;
+  padding: 0.5rem 1rem;
+}
+
+
+/* Buttons and Links */
+.project-links {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+}
+
+.pixel-btn {
+  background-color: #000;
+  color: #00ff00 !important; /* Force green color to override bootstrap blue */
+  border: 2px solid #00ff00;
+  font-family: 'Press Start 2P', cursive;
+  padding: 0.8rem 1.5rem;
+  text-decoration: none;
+  transition: all 0.2s;
+  box-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
+  display: inline-block;
+  position: relative;
+}
+
+
+
+.pixel-btn::after {
+    content: '';
+    position: absolute;
+    left: 0.4rem;
+    right: -0.4rem;
+    top: 0.4rem;
+    bottom: -0.4rem;
+    background: #2c3e50;
+    z-index: -1;
+}
+
+.pixel-btn:hover {
+  background-color: #00ff00;
+  color: #000;
+  transform: translateY(-2px);
+}
+
+.back-container {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem;
+    }
+
+    .project-detail {
+        padding: 1rem;
+    }
+
+    .project-links {
+        flex-direction: column;
+    }
+
+    .pixel-btn {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+/* Pixel Border */
+.pixel-border {
+    border: 4px solid #333;
+    position: relative;
+}
+
+.pixel-border::after {
+    content: '';
+    position: absolute;
+    left: -8px;
+    top: -8px;
+    right: -8px;
+    bottom: -8px;
+    border: 4px solid #333;
+    z-index: -1;
 }
