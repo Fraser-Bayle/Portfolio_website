@@ -29,6 +29,149 @@ body {
     padding: 0;
 }
 
+/* Matrix Animation Styles */
+.matrix-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: var(--pitch-black);
+    overflow: hidden;
+    z-index: -1;
+}
+
+.matrix-char {
+    display: block;
+    margin: 2px 0;
+    transition: opacity 0.5s;
+}
+
+.matrix-column {
+    position: absolute;
+    width: 20px;
+    font-size: 16px;
+    line-height: 1.5;
+    text-align: center;
+    color: var(--matrix-green);
+    text-shadow: 0 0 8px var(--matrix-green);
+
+    /* Animation properties with all vendor prefixes */
+    -webkit-animation: matrix-fall linear infinite;
+    -moz-animation: matrix-fall linear infinite;
+    -o-animation: matrix-fall linear infinite;
+    animation: matrix-fall linear infinite;
+
+    /* Performance optimizations */
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    will-change: transform;
+}
+
+/* Column positions and timing variations with vendor prefixes */
+.matrix-column:nth-child(1) {
+    left: 25%;
+    -webkit-animation-duration: 15s;
+    -moz-animation-duration: 15s;
+    -o-animation-duration: 15s;
+    animation-duration: 15s;
+}
+
+.matrix-column:nth-child(2) {
+    left: 50%;
+    -webkit-animation-duration: 17s;
+    -moz-animation-duration: 17s;
+    -o-animation-duration: 17s;
+    animation-duration: 17s;
+    -webkit-animation-delay: -5s;
+    -moz-animation-delay: -5s;
+    -o-animation-delay: -5s;
+    animation-delay: -5s;
+}
+
+.matrix-column:nth-child(3) {
+    left: 75%;
+    -webkit-animation-duration: 13s;
+    -moz-animation-duration: 13s;
+    -o-animation-duration: 13s;
+    animation-duration: 13s;
+    -webkit-animation-delay: -8s;
+    -moz-animation-delay: -8s;
+    -o-animation-delay: -8s;
+    animation-delay: -8s;
+}
+
+/* Keyframes for all browsers */
+@-webkit-keyframes matrix-fall {
+    0% {
+        -webkit-transform: translateY(-100%);
+        transform: translateY(-100%);
+    }
+    100% {
+        -webkit-transform: translateY(100vh);
+        transform: translateY(100vh);
+    }
+}
+
+@-moz-keyframes matrix-fall {
+    0% {
+        -moz-transform: translateY(-100%);
+        transform: translateY(-100%);
+    }
+    100% {
+        -moz-transform: translateY(100vh);
+        transform: translateY(100vh);
+    }
+}
+
+@-o-keyframes matrix-fall {
+    0% {
+        -o-transform: translateY(-100%);
+        transform: translateY(-100%);
+    }
+    100% {
+        -o-transform: translateY(100vh);
+        transform: translateY(100vh);
+    }
+}
+
+@keyframes matrix-fall {
+    0% {
+        -webkit-transform: translateY(-100%);
+        -moz-transform: translateY(-100%);
+        -o-transform: translateY(-100%);
+        transform: translateY(-100%);
+    }
+    100% {
+        -webkit-transform: translateY(100vh);
+        -moz-transform: translateY(100vh);
+        -o-transform: translateY(100vh);
+        transform: translateY(100vh);
+    }
+}
+
+/* Ensure content stays above matrix with proper z-indexing */
+.home-content {
+    position: relative;
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 2rem;
+    border-radius: 8px;
+    -webkit-box-shadow: 0 0 20px rgba(0, 255, 0, 0.2);
+    -moz-box-shadow: 0 0 20px rgba(0, 255, 0, 0.2);
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.2);
+    margin-top: 20vh;
+
+    /* Add transforms to create a new stacking context */
+    -webkit-transform: translateZ(0);
+    -moz-transform: translateZ(0);
+    -o-transform: translateZ(0);
+    transform: translateZ(0);
+}
+
+
 /* Typography */
 .pixel-text, .pixel-font {
     font-family: 'Press Start 2P', cursive;
