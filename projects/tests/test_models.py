@@ -43,7 +43,7 @@ class TestProjectModels(TestCase):
         self.assertIsNone(project.live_url)
         self.assertIsNone(project.github_url)
         self.assertFalse(bool(project.thumbnail))
-        self.assertIsNone(project.image)
+        self.assertFalse(bool(project.image))
 
     def test_project_created_at_auto_now(self):
         self.assertIsNotNone(self.project.created_at)

@@ -1,1 +1,12 @@
 {% extends 'base.html' %}
+{% load static %}
+{% block title %}Home{% endblock title %}
+{% block content %}
+<div class="container my-4">
+    <h1 class="page-title pixel-text">Fraser Bayle</h1>
+    <p class="pixel-text">Welcome to my site</p>
+    <a href="{% url 'projects:project_list' %}" class="pixel-btn">Projects</a>
+    <a href="{% url 'pages:about' %}" class="pixel-btn">About</a>
+    <a href="{% url 'pages:technologies' %}" class="pixel-btn">Technologies</a>
+</div>
+{% endblock content %}

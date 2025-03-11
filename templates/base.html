@@ -10,6 +10,7 @@
     <!-- 8-bit retro font -->
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <style>
+        <!-- TODO refactor out into CSS -->
         .navbar-dark {
             background-color: #000 !important;
             border-bottom: 4px solid #00ff00;
@@ -37,7 +38,8 @@
     </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark">
+{% if request.path != '/' %}
+    <nav class="navbar navbar-expand-lg navbar-dark" id="navbar">
         <a class="navbar-brand" href="{% url 'pages:home' %}">8-Bit-Dev</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
             <span class="navbar-toggler-icon"></span>
@@ -47,19 +49,25 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'pages:home' %}">Home</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'projects:project_list' %}">Projects</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'pages:about' %}">About</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'pages:contact' %}">Contact</a>
-                </li>
+                {% if request.path != '/projects/' %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'projects:project_list' %}">Projects</a>
+                    </li>
+                {% endif %}
+                {% if request.path != '/about/' %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'pages:about' %}">About</a>
+                    </li>
+                {% endif %}
+                {% if request.path != '/technologies/' %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'pages:technologies' %}">Technologies</a>
+                    </li>
+                {% endif %}
             </ul>
         </div>
     </nav>
-
+{% endif %}
     <main>
         {% block content %}{% endblock content %}
     </main>

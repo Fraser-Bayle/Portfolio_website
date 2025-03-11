@@ -7,5 +7,8 @@ def home(request):
 def about(request):
     return render(request, 'pages/about.html')
 
-def contact(request):
-    return render(request, 'pages/contact.html')
+def technologies(request):
+    return render(request, 'pages/technologies.html')
+
+def easter_egg(request):
+    return render(request, 'pages/easter_egg.html')

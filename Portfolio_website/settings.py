@@ -36,6 +36,7 @@ ALLOWED_HOSTS = [
 # Application definition
 
 INSTALLED_APPS = [
+    'demos',
     'pages',
     'projects',
     'rest_framework',
