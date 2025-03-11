@@ -29,8 +29,9 @@ body {
     padding: 0;
 }
 
+
 /* Matrix Animation Styles */
-.matrix-background {
+/*.matrix-background {
     position: fixed;
     top: 0;
     left: 0;
@@ -56,13 +57,13 @@ body {
     color: var(--matrix-green);
     text-shadow: 0 0 8px var(--matrix-green);
 
-    /* Animation properties with all vendor prefixes */
+    !* Animation properties with all vendor prefixes *!
     -webkit-animation: matrix-fall linear infinite;
     -moz-animation: matrix-fall linear infinite;
     -o-animation: matrix-fall linear infinite;
     animation: matrix-fall linear infinite;
 
-    /* Performance optimizations */
+    !* Performance optimizations *!
     -webkit-transform-style: preserve-3d;
     transform-style: preserve-3d;
     -webkit-backface-visibility: hidden;
@@ -70,7 +71,7 @@ body {
     will-change: transform;
 }
 
-/* Column positions and timing variations with vendor prefixes */
+!* Column positions and timing variations with vendor prefixes *!
 .matrix-column:nth-child(1) {
     left: 25%;
     -webkit-animation-duration: 15s;
@@ -103,7 +104,7 @@ body {
     animation-delay: -8s;
 }
 
-/* Keyframes for all browsers */
+!* Keyframes for all browsers *!
 @-webkit-keyframes matrix-fall {
     0% {
         -webkit-transform: translateY(-100%);
@@ -150,7 +151,7 @@ body {
         -o-transform: translateY(100vh);
         transform: translateY(100vh);
     }
-}
+}*/
 
 /* Ensure content stays above matrix with proper z-indexing */
 .home-content {
