@@ -234,6 +234,14 @@ body {
     transition: background-color 0.2s;
 }
 
+.pixel-btn::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
 .pixel-btn:hover {
     color: var(--bg-primary) !important;
     transform: translateY(-2px);

@@ -12,6 +12,14 @@ class MatrixRain {
         this.canvas.style.height = '100%';
         this.canvas.style.zIndex = '-1';
 
+        this.canvas.style.webkitTransform = 'translateZ(0)';
+        this.canvas.style.transform = 'translateZ(0)';
+
+        // Force hardware acceleration
+        this.context.imageSmoothingEnabled = false;
+        this.context.webkitImageSmoothingEnabled = false;
+
+
         // Add canvas to the page
         document.body.appendChild(this.canvas);
 
@@ -21,7 +29,8 @@ class MatrixRain {
         this.nums = '0123456789';
         this.alphabet = this.katakana + this.latin + this.nums;
 
-        this.fontSize = 16;
+        this.fontSize = 8;
+        this.speed = 0.5;
         this.rainDrops = [];
 
         // Bind resize handler
@@ -43,8 +52,10 @@ class MatrixRain {
 
     initializeDrops() {
         this.rainDrops = [];
+        this.dropSpeeds = [];
         for(let x = 0; x < this.columns; x++) {
             this.rainDrops[x] = 1;
+            this.dropSpeeds[x] = this.speed * (0.8 + Math.random() * 0.4);
         }
     }
 
@@ -62,7 +73,7 @@ class MatrixRain {
             if(this.rainDrops[i]*this.fontSize > this.canvas.height && Math.random() > 0.975) {
                 this.rainDrops[i] = 0;
             }
-            this.rainDrops[i]++;
+            this.rainDrops[i] += this.dropSpeeds[i];
         }
     }
 
