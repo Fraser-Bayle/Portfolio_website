@@ -29,7 +29,7 @@ class MatrixRain {
         this.nums = '0123456789';
         this.alphabet = this.katakana + this.latin + this.nums;
 
-        this.fontSize = 8;
+        this.fontSize = 12;
         this.speed = 0.5;
         this.rainDrops = [];
 

@@ -7,7 +7,7 @@
     <h1 class="page-title pixel-text">My Projects</h1>
 
     <!-- Filter Form -->
-    <form method="get" id="tag-filter-form" class="pixel-border mb-4">
+    <form method="get" id="tag-filter-form" class="home-content">
       <fieldset>
         <legend class="pixel-text">Filter by Tags:</legend>
         <div class="tag-container">
@@ -33,7 +33,7 @@
     {% else %}
         {% for project in projects %}
       <a href="{% url 'projects:project_detail' project.pk %}" class="project-link">
-        <div class="project-card pixel-border">
+        <div class="project-card home-content">
           {% if project.thumbnail %}
             <img src="{{ project.thumbnail.url }}" alt="{{ project.title }} thumbnail" class="project-thumbnail">
           {% else %}
